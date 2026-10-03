@@ -104,6 +104,73 @@ git push
 
 ---
 
+## 🔀 How to Switch Branches in Depth
+
+### 1. View your branches
+```bash
+# View local branches (* marks your current branch)
+git branch
+
+# View all branches (including remote branches on GitHub)
+git branch -a
+```
+
+### 2. Switch to an existing branch
+```bash
+git checkout <branch-name>
+# OR (modern Git syntax):
+git switch <branch-name>
+```
+**Examples:**
+```bash
+git checkout main
+git checkout feature/auth-system
+```
+
+### 3. Create a new branch and switch to it immediately
+```bash
+git checkout -b <new-branch-name>
+# OR:
+git switch -c <new-branch-name>
+```
+**Example:**
+```bash
+git checkout -b feature/typing-engine
+```
+
+### 4. Switch to a teammate's branch from GitHub
+If Vedant or Moksh pushed a branch called `feature/typing-engine` and you want to test it locally:
+```bash
+# 1. Fetch all latest branches from GitHub
+git fetch origin
+
+# 2. Switch to teammate's branch (Git creates local tracking branch automatically)
+git checkout feature/typing-engine
+```
+
+### ⚠️ What to do if Git blocks switching ("local changes would be overwritten")
+
+**Option A (Save progress with a commit — Recommended):**
+```bash
+git add .
+git commit -m "wip: save work before switching branches"
+git checkout <other-branch>
+```
+
+**Option B (Temporarily stash changes without committing):**
+```bash
+git stash                    # Hides your uncommitted work safely
+git checkout <other-branch>  # Now switch cleanly
+
+# When you come back to this branch:
+git stash pop                # Restores your hidden work
+```
+
+### 💡 Visual Tip (VS Code GUI):
+Look at the **bottom-left corner** of VS Code. Click on the branch name (e.g., `main` or `feature/auth-system`). A dropdown will appear at the top to search, switch, or create branches with 1 click!
+
+---
+
 ## ⚡ How to Resolve Merge Conflicts (If they ever happen)
 
 If two teammates edited the exact same line in the same file, Git will pause and ask you to choose.
