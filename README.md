@@ -229,7 +229,7 @@ CodeRush/
 
 1. **Clone the repo**
    ```bash
-   git clone https://github.com/<your-username>/CodeRush.git
+   git clone https://github.com/ominoushadow06-gif/CodeRush.git
    ```
 
 2. **Create database**
