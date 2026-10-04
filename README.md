@@ -130,11 +130,11 @@ Results page shows all metrics **separately categorized** by difficulty level.
 ## 🗄️ Database Schema
 
 ```sql
-CREATE DATABASE coderush;
-USE coderush;
+CREATE DATABASE IF NOT EXISTS coderush_db;
+USE coderush_db;
 
--- Users table
-CREATE TABLE users (
+-- 1. Users Table
+CREATE TABLE IF NOT EXISTS users (
     user_id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50) UNIQUE NOT NULL,
     email VARCHAR(100) UNIQUE NOT NULL,
@@ -142,27 +142,44 @@ CREATE TABLE users (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Code snippets table
-CREATE TABLE snippets (
+-- 2. Language-Specific Snippet Tables
+CREATE TABLE IF NOT EXISTS snippets_java (
     snippet_id INT AUTO_INCREMENT PRIMARY KEY,
     code_text TEXT NOT NULL,
-    language VARCHAR(30) NOT NULL,
-    difficulty ENUM('easy', 'medium', 'hard') NOT NULL
+    description VARCHAR(255) NOT NULL,
+    difficulty ENUM('easy', 'medium', 'hard') NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Practice results table
-CREATE TABLE results (
+CREATE TABLE IF NOT EXISTS snippets_python (
+    snippet_id INT AUTO_INCREMENT PRIMARY KEY,
+    code_text TEXT NOT NULL,
+    description VARCHAR(255) NOT NULL,
+    difficulty ENUM('easy', 'medium', 'hard') NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS snippets_C (
+    snippet_id INT AUTO_INCREMENT PRIMARY KEY,
+    code_text TEXT NOT NULL,
+    description VARCHAR(255) NOT NULL,
+    difficulty ENUM('easy', 'medium', 'hard') NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- 3. Practice Results Table
+CREATE TABLE IF NOT EXISTS results (
     result_id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
     snippet_id INT NOT NULL,
-    wpm DECIMAL(5,2),
-    accuracy DECIMAL(5,2),
-    mistakes INT,
-    time_taken INT,  -- seconds
-    difficulty ENUM('easy', 'medium', 'hard'),
+    language ENUM('java', 'python', 'c') NOT NULL,
+    wpm DECIMAL(5,2) NOT NULL,
+    accuracy DECIMAL(5,2) NOT NULL,
+    mistakes INT NOT NULL DEFAULT 0,
+    time_taken INT NOT NULL,  -- in seconds
+    difficulty ENUM('easy', 'medium', 'hard') NOT NULL,
     attempted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES users(user_id),
-    FOREIGN KEY (snippet_id) REFERENCES snippets(snippet_id)
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
 );
 ```
 
@@ -240,7 +257,7 @@ CodeRush/
 3. **Configure DB connection**
    Update `DBConnection.java` with your MySQL credentials:
    ```java
-   String url = "jdbc:mysql://localhost:3306/coderush";
+   String url = "jdbc:mysql://localhost:3306/coderush_db";
    String user = "root";
    String password = "your_password";
    ```
