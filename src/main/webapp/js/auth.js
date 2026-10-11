@@ -28,9 +28,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     case 0:
                     case 1:
                         strengthMeter.style.width = '20%';
-                        strengthMeter.style.backgroundColor = 'var(--danger)';
+                        strengthMeter.style.backgroundColor = 'var(--error)';
                         strengthText.textContent = 'Too weak';
-                        strengthText.style.color = 'var(--danger)';
+                        strengthText.style.color = 'var(--error)';
                         break;
                     case 2:
                     case 3:

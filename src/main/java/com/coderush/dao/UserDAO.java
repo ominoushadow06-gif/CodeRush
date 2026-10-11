@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 public class UserDAO {
 
-    public boolean registerUser(User user) {
+    public boolean registerUser(User user) throws SQLException {
         String sql = "INSERT INTO users (username, email, password_hash) VALUES (?, ?, ?)";
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -16,9 +16,6 @@ public class UserDAO {
             ps.setString(2, user.getEmail());
             ps.setString(3, user.getPasswordHash());
             return ps.executeUpdate() > 0;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
         }
     }
 

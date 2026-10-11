@@ -50,7 +50,9 @@ local.properties
 .loadpath
 
 # Database credentials & local configs
+.env
 *.env
 .env.local
+!.env.example
 database.md
 

@@ -2,6 +2,7 @@ package com.coderush.servlet;
 
 import com.coderush.dao.UserDAO;
 import com.coderush.model.User;
+import com.coderush.util.PasswordHasher;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -39,7 +40,7 @@ public class LoginServlet extends HttpServlet {
 
         User user = userDAO.getUserByUsernameOrEmail(identifier.trim());
 
-        if (user != null && password.equals(user.getPasswordHash())) {
+        if (user != null && PasswordHasher.hashPassword(password).equals(user.getPasswordHash())) {
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
             response.sendRedirect(request.getContextPath() + "/dashboard");

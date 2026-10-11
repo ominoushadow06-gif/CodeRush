@@ -63,7 +63,7 @@ function loadSnippet() {
         .then(res => res.json())
         .then(data => {
             if (data.error) {
-                codeDisplay.innerHTML = `<span style="color: var(--danger)">${data.error}</span>`;
+                codeDisplay.innerHTML = `<span style="color: var(--error)">${data.error}</span>`;
                 return;
             }
             snippetId = data.snippetId;
@@ -80,7 +80,7 @@ function loadSnippet() {
             typingInput.focus();
         })
         .catch(err => {
-            codeDisplay.innerHTML = '<span style="color: var(--danger)">Failed to load snippet from server.</span>';
+            codeDisplay.innerHTML = '<span style="color: var(--error)">Failed to load snippet from server.</span>';
             console.error('Error loading snippet:', err);
         });
 }
@@ -111,6 +111,7 @@ function handleTyping(e) {
     if (!isStarted) {
         startTimer();
         isStarted = true;
+        window._typingStarted = true; // tell practice.jsp overlay to stay hidden
     }
 
     totalKeystrokes++;

@@ -36,11 +36,14 @@ document.addEventListener('DOMContentLoaded', () => {
                         {
                             label: 'Speed (WPM)',
                             data: wpmData,
-                            borderColor: '#38bdf8',
-                            backgroundColor: 'rgba(56, 189, 248, 0.1)',
-                            borderWidth: 3,
-                            pointBackgroundColor: '#38bdf8',
+                            borderColor: '#5E6AD2',
+                            backgroundColor: 'rgba(94, 106, 210, 0.08)',
+                            borderWidth: 2.5,
+                            pointBackgroundColor: '#6872D9',
+                            pointBorderColor: '#0a0a0c',
+                            pointBorderWidth: 2,
                             pointRadius: 4,
+                            pointHoverRadius: 6,
                             tension: 0.35,
                             fill: true,
                             yAxisID: 'y'
@@ -51,9 +54,12 @@ document.addEventListener('DOMContentLoaded', () => {
                             borderColor: '#22c55e',
                             backgroundColor: 'transparent',
                             borderWidth: 2,
-                            borderDash: [5, 5],
-                            pointBackgroundColor: '#22c55e',
+                            borderDash: [6, 3],
+                            pointBackgroundColor: '#4ade80',
+                            pointBorderColor: '#0a0a0c',
+                            pointBorderWidth: 2,
                             pointRadius: 3,
+                            pointHoverRadius: 5,
                             tension: 0.3,
                             yAxisID: 'y1'
                         }
@@ -62,30 +68,40 @@ document.addEventListener('DOMContentLoaded', () => {
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
-                    interaction: {
-                        mode: 'index',
-                        intersect: false
-                    },
+                    interaction: { mode: 'index', intersect: false },
                     plugins: {
                         legend: {
                             labels: {
-                                color: '#94a3b8',
-                                font: { family: 'Inter', size: 12, weight: '600' }
+                                color: '#8A8F98',
+                                font: { family: 'Inter', size: 12, weight: '500' },
+                                boxWidth: 12,
+                                boxHeight: 12,
+                                borderRadius: 3,
+                                usePointStyle: true
                             }
+                        },
+                        tooltip: {
+                            backgroundColor: 'rgba(10,10,12,0.9)',
+                            borderColor: 'rgba(255,255,255,0.08)',
+                            borderWidth: 1,
+                            titleColor: '#EDEDEF',
+                            bodyColor: '#8A8F98',
+                            padding: 12,
+                            cornerRadius: 8
                         }
                     },
                     scales: {
                         x: {
-                            grid: { color: 'rgba(255, 255, 255, 0.05)' },
-                            ticks: { color: '#64748b' }
+                            grid: { color: 'rgba(255,255,255,0.04)', drawBorder: false },
+                            ticks: { color: '#8A8F98', font: { size: 11 } }
                         },
                         y: {
                             type: 'linear',
                             display: true,
                             position: 'left',
-                            title: { display: true, text: 'WPM', color: '#38bdf8' },
-                            grid: { color: 'rgba(255, 255, 255, 0.05)' },
-                            ticks: { color: '#94a3b8' }
+                            title: { display: true, text: 'WPM', color: '#5E6AD2', font: { size: 11 } },
+                            grid: { color: 'rgba(255,255,255,0.04)', drawBorder: false },
+                            ticks: { color: '#8A8F98', font: { size: 11 } }
                         },
                         y1: {
                             type: 'linear',
@@ -93,9 +109,9 @@ document.addEventListener('DOMContentLoaded', () => {
                             position: 'right',
                             min: 0,
                             max: 100,
-                            title: { display: true, text: 'Accuracy %', color: '#22c55e' },
+                            title: { display: true, text: 'Accuracy %', color: '#22c55e', font: { size: 11 } },
                             grid: { drawOnChartArea: false },
-                            ticks: { color: '#94a3b8' }
+                            ticks: { color: '#8A8F98', font: { size: 11 } }
                         }
                     }
                 }
