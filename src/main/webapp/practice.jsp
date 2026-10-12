@@ -144,6 +144,78 @@
             </div>
         </div>
 
+        <!-- Virtual Keyboard -->
+        <div id="virtual-keyboard" class="virtual-keyboard fade-up delay-2">
+            <div class="kb-row">
+                <div class="kb-key" data-key="`"><span class="top-label">~</span><span class="bottom-label">`</span></div>
+                <div class="kb-key" data-key="1"><span class="top-label">!</span><span class="bottom-label">1</span></div>
+                <div class="kb-key" data-key="2"><span class="top-label">@</span><span class="bottom-label">2</span></div>
+                <div class="kb-key" data-key="3"><span class="top-label">#</span><span class="bottom-label">3</span></div>
+                <div class="kb-key" data-key="4"><span class="top-label">$</span><span class="bottom-label">4</span></div>
+                <div class="kb-key" data-key="5"><span class="top-label">%</span><span class="bottom-label">5</span></div>
+                <div class="kb-key" data-key="6"><span class="top-label">^</span><span class="bottom-label">6</span></div>
+                <div class="kb-key" data-key="7"><span class="top-label">&</span><span class="bottom-label">7</span></div>
+                <div class="kb-key" data-key="8"><span class="top-label">*</span><span class="bottom-label">8</span></div>
+                <div class="kb-key" data-key="9"><span class="top-label">(</span><span class="bottom-label">9</span></div>
+                <div class="kb-key" data-key="0"><span class="top-label">)</span><span class="bottom-label">0</span></div>
+                <div class="kb-key" data-key="-"><span class="top-label">_</span><span class="bottom-label">-</span></div>
+                <div class="kb-key" data-key="="><span class="top-label">+</span><span class="bottom-label">=</span></div>
+                <div class="kb-key kb-key-wide" data-key="Backspace">Backspace</div>
+            </div>
+            <div class="kb-row">
+                <div class="kb-key kb-key-wide" data-key="Tab">Tab</div>
+                <div class="kb-key" data-key="q">Q</div>
+                <div class="kb-key" data-key="w">W</div>
+                <div class="kb-key" data-key="e">E</div>
+                <div class="kb-key" data-key="r">R</div>
+                <div class="kb-key" data-key="t">T</div>
+                <div class="kb-key" data-key="y">Y</div>
+                <div class="kb-key" data-key="u">U</div>
+                <div class="kb-key" data-key="i">I</div>
+                <div class="kb-key" data-key="o">O</div>
+                <div class="kb-key" data-key="p">P</div>
+                <div class="kb-key" data-key="["><span class="top-label">{</span><span class="bottom-label">[</span></div>
+                <div class="kb-key" data-key="]"><span class="top-label">}</span><span class="bottom-label">]</span></div>
+                <div class="kb-key" data-key="\"><span class="top-label">|</span><span class="bottom-label">\</span></div>
+            </div>
+            <div class="kb-row">
+                <div class="kb-key kb-key-wide" data-key="CapsLock">Caps</div>
+                <div class="kb-key" data-key="a">A</div>
+                <div class="kb-key" data-key="s">S</div>
+                <div class="kb-key" data-key="d">D</div>
+                <div class="kb-key" data-key="f">F</div>
+                <div class="kb-key" data-key="g">G</div>
+                <div class="kb-key" data-key="h">H</div>
+                <div class="kb-key" data-key="j">J</div>
+                <div class="kb-key" data-key="k">K</div>
+                <div class="kb-key" data-key="l">L</div>
+                <div class="kb-key" data-key=";"><span class="top-label">:</span><span class="bottom-label">;</span></div>
+                <div class="kb-key" data-key="'"><span class="top-label">"</span><span class="bottom-label">'</span></div>
+                <div class="kb-key kb-key-wide" data-key="Enter">Enter</div>
+            </div>
+            <div class="kb-row">
+                <div class="kb-key kb-key-wide" data-key="ShiftLeft">Shift</div>
+                <div class="kb-key" data-key="z">Z</div>
+                <div class="kb-key" data-key="x">X</div>
+                <div class="kb-key" data-key="c">C</div>
+                <div class="kb-key" data-key="v">V</div>
+                <div class="kb-key" data-key="b">B</div>
+                <div class="kb-key" data-key="n">N</div>
+                <div class="kb-key" data-key="m">M</div>
+                <div class="kb-key" data-key=","><span class="top-label"><</span><span class="bottom-label">,</span></div>
+                <div class="kb-key" data-key="."><span class="top-label">></span><span class="bottom-label">.</span></div>
+                <div class="kb-key" data-key="/"><span class="top-label">?</span><span class="bottom-label">/</span></div>
+                <div class="kb-key kb-key-wide" data-key="ShiftRight">Shift</div>
+            </div>
+            <div class="kb-row">
+                <div class="kb-key kb-key-wide" data-key="Ctrl">Ctrl</div>
+                <div class="kb-key kb-key-wide" data-key="Alt">Alt</div>
+                <div class="kb-key kb-key-space" data-key=" ">Space</div>
+                <div class="kb-key kb-key-wide" data-key="Alt">Alt</div>
+                <div class="kb-key kb-key-wide" data-key="Ctrl">Ctrl</div>
+            </div>
+        </div>
+
         <!-- Hidden result submission form -->
         <form id="result-form" action="result" method="POST" style="display:none;">
             <input type="hidden" id="res-snippetId"  name="snippetId">

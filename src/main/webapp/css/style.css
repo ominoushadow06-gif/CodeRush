@@ -1099,6 +1099,105 @@ button:focus-visible, a:focus-visible, input:focus-visible {
     background: rgba(255,255,255,0.16);
 }
 
+/* --- Virtual Keyboard --- */
+
+/* --- Virtual Keyboard --- */
+
+.virtual-keyboard {
+    max-width: 920px;
+    margin: 24px auto 0;
+    padding: 16px;
+    background: #1a1a1f; /* Dark navy/slate */
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 4px 30px rgba(0,0,0,0.4);
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.kb-row {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 6px;
+    justify-content: center;
+}
+
+/* Staggering rows */
+.kb-row:nth-child(2) { margin-left: 30px; }
+.kb-row:nth-child(3) { margin-left: 45px; }
+.kb-row:nth-child(4) { margin-left: 60px; }
+
+.kb-row:last-child {
+    margin-bottom: 0;
+    margin-left: 0;
+}
+
+.kb-key {
+    flex: 1;
+    min-width: 40px;
+    height: 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #2a2a32;
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 6px;
+    color: var(--fg);
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all 150ms var(--ease-out);
+    position: relative;
+    text-align: center;
+    line-height: 1;
+}
+
+.kb-key .top-label {
+    font-size: 0.65rem;
+    color: var(--fg-muted);
+    margin-bottom: 2px;
+}
+
+.kb-key .bottom-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/* Specific Key Widths */
+.kb-key-wide { flex: 1.5; }
+.kb-key-space { flex: 6; }
+
+/* Active / highlighted key */
+.kb-key.kb-active {
+    background: #3b82f6 !important; /* Bright blue */
+    border-color: #60a5fa !important;
+    color: #fff !important;
+    box-shadow: 0 0 12px rgba(59, 130, 246, 0.5);
+    transform: scale(1.02);
+}
+
+.kb-key.kb-active .top-label { color: #e5e7eb; }
+
+.kb-key.kb-shift-active {
+    background: #3b82f6 !important;
+    border-color: #60a5fa !important;
+    color: #fff !important;
+}
+
+/* Error flash */
+.kb-key.kb-error {
+    background: #ef4444 !important;
+    border-color: #f77171 !important;
+}
+
+@media (max-width: 767px) {
+    .virtual-keyboard { padding: 10px 6px; }
+    .kb-row { gap: 2px; margin-bottom: 2px; }
+    .kb-row:nth-child(2), .kb-row:nth-child(3), .kb-row:nth-child(4) { margin-left: 0; }
+    .kb-key { height: 34px; font-size: 0.6rem; }
+}
+
 /* --- Utility --- */
 
 .text-center { text-align: center; }

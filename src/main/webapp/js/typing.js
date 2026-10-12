@@ -74,6 +74,7 @@ function loadSnippet() {
             }
 
             renderSnippet(snippetText);
+            updateVirtualKeyboard(snippetText[0]);
             const typingInput = document.getElementById('typing-input');
             typingInput.value = '';
             typingInput.disabled = false;
@@ -83,6 +84,53 @@ function loadSnippet() {
             codeDisplay.innerHTML = '<span style="color: var(--error)">Failed to load snippet from server.</span>';
             console.error('Error loading snippet:', err);
         });
+}
+
+function updateVirtualKeyboard(char) {
+    document.querySelectorAll('.kb-key').forEach(el => {
+        el.classList.remove('kb-active', 'kb-shift-active');
+    });
+
+    if (char === undefined) return;
+
+    let key = char.toLowerCase();
+    // Check if character needs shift (Upper case or symbol)
+    const shiftedChars = '!@#$%^&*()_+{}:"<>?|~';
+    const isShifted = /[A-Z]/.test(char) || shiftedChars.includes(char);
+
+    // Mapping from character to data-key
+    const keyMap = {
+        '~': '`', '!': '1', '@': '2', '#': '3', '$': '4',
+        '%': '5', '^': '6', '&': '7', '*': '8', '(': '9', ')': '0',
+        '_': '-', '+': '=', '{': '[', '}': ']', '|': '\\',
+        ':': ';', '"': "'", '<': ',', '>': '.', '?': '/',
+        '\n': 'Enter', ' ': ' '
+    };
+
+    if (isShifted) {
+        document.querySelector('[data-key="ShiftLeft"]').classList.add('kb-shift-active');
+        document.querySelector('[data-key="ShiftRight"]').classList.add('kb-shift-active');
+    }
+
+    const finalKey = keyMap[char] || key;
+    const keyElement = document.querySelector(`[data-key="${finalKey.replace(/\\/g, '\\\\').replace(/"/g, '\\"')}"]`);
+    if (keyElement) {
+        keyElement.classList.add('kb-active');
+    }
+}
+
+function flashKey(key, isError) {
+    const dataKey = key === ' ' ? ' ' : key;
+    const el = document.querySelector(`[data-key="${dataKey.replace(/\\/g, '\\\\').replace(/"/g, '\\"')}"]`);
+    if (el) {
+        if (isError) {
+            el.classList.add('kb-error');
+            setTimeout(() => el.classList.remove('kb-error'), 200);
+        } else {
+            el.classList.add('kb-active');
+            setTimeout(() => el.classList.remove('kb-active'), 100);
+        }
+    }
 }
 
 function renderSnippet(text) {
@@ -103,6 +151,7 @@ function handleKeyDown(e) {
         resetPractice();
         return;
     }
+    flashKey(e.key, false);
 }
 
 function handleTyping(e) {
@@ -137,6 +186,13 @@ function handleTyping(e) {
 
     mistakes = currentMistakes;
     document.getElementById('mistakes-count').textContent = mistakes;
+
+    // Flash error if last character is wrong
+    if (inputVal.length > 0 && inputVal[inputVal.length - 1] !== snippetText[inputVal.length - 1]) {
+        flashKey(inputVal[inputVal.length - 1], true);
+    }
+
+    updateVirtualKeyboard(snippetText[inputVal.length]);
 
     // Calculate Real-Time Live Stats
     const elapsedMinutes = Math.max(totalSeconds / 60, 0.016); // avoid zero div
