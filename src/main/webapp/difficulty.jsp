@@ -19,27 +19,29 @@
 
 <!-- Navbar -->
 <nav class="navbar">
-    <a href="index.jsp" class="brand-logo">Code<span>Rush</span><span class="brand-badge">Trainer</span></a>
-    
-    <div class="nav-links desktop-only">
-        <a href="dashboard" class="nav-link">Dashboard</a>
-        <a href="difficulty.jsp" class="nav-link active">Practice</a>
-        <a href="history" class="nav-link">History</a>
-    </div>
-
-    <div class="nav-actions desktop-only">
-        <div class="user-pill">
-            <span class="user-avatar"><%= user.getUsername().substring(0, 1) %></span>
-            <span><%= user.getUsername() %></span>
+    <div class="navbar-container">
+        <a href="index.jsp" class="brand-logo">Code<span>Rush</span><span class="brand-badge">Trainer</span></a>
+        
+        <div class="nav-links desktop-only">
+            <a href="dashboard" class="nav-link">Dashboard</a>
+            <a href="difficulty.jsp" class="nav-link active">Practice</a>
+            <a href="history" class="nav-link">History</a>
         </div>
-        <a href="logout" class="btn btn-ghost btn-sm">Log out</a>
-    </div>
 
-    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
-        <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.75">
-            <path d="M3 5h14M3 10h14M3 15h14"/>
-        </svg>
-    </button>
+        <div class="nav-actions desktop-only">
+            <div class="user-pill">
+                <span class="user-avatar"><%= user.getUsername().substring(0, 1) %></span>
+                <span><%= user.getUsername() %></span>
+            </div>
+            <a href="logout" class="btn btn-ghost btn-sm">Log out</a>
+        </div>
+
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+            <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.75">
+                <path d="M3 5h14M3 10h14M3 15h14"/>
+            </svg>
+        </button>
+    </div>
 </nav>
 
 <!-- Mobile Menu -->
@@ -55,19 +57,19 @@
 
 <!-- Main Content -->
 <main>
-    <div class="container section" style="padding-top:40px; max-width:960px;">
+    <div class="container container-difficulty section" style="padding-top:40px;">
 
         <!-- Page Header -->
-        <div class="text-center fade-up" style="margin-bottom:36px;">
+        <div class="text-center fade-up" style="margin-bottom:32px;">
             <span class="label-tag mb-2">Practice Setup</span>
             <h1 class="hero-heading" style="margin-top:8px; margin-bottom:8px;">Choose your difficulty</h1>
-            <p class="body-large" style="max-width:540px; margin:0 auto;">
+            <p class="body-large" style="max-width:580px; margin:0 auto;">
                 Select your programming language and challenge level to begin typing real code snippets.
             </p>
         </div>
 
         <!-- Language Picker -->
-        <div class="fade-up delay-1" style="margin-bottom:36px; text-align:center;">
+        <div class="fade-up delay-1" style="margin-bottom:32px; text-align:center;">
             <div style="font-size:0.75rem; font-weight:600; font-family:var(--font-mono); text-transform:uppercase; color:var(--text-muted); margin-bottom:10px; letter-spacing:0.05em;">
                 Programming Language
             </div>
@@ -96,51 +98,51 @@
             </div>
         </div>
 
-        <!-- Difficulty Cards Grid -->
-        <div class="feature-grid" style="margin-bottom:36px;">
+        <!-- Difficulty Cards 3-Column Grid (Wider horizontal utilization) -->
+        <div class="difficulty-grid">
 
-            <!-- Easy -->
+            <!-- Easy: Fundamentals -->
             <div class="feature-card fade-up delay-2">
-                <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:12px;">
+                <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:14px;">
                     <div class="feature-card-icon" style="background:var(--success-bg); border:1px solid var(--success-border);">
                         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                     </div>
                     <span class="badge badge-easy">Easy</span>
                 </div>
                 <h3>Fundamentals</h3>
-                <p>Standard syntax, variable declarations, arithmetic expressions, and basic loops. Ideal for warming up fingers.</p>
+                <p>Standard syntax, variable declarations, arithmetic expressions, and basic loops. Ideal for warming up fingers and building rhythm.</p>
                 <a href="practice.jsp?language=<%= lang %>&difficulty=easy" class="btn btn-primary btn-block">
                     <span>Start Easy</span>
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </a>
             </div>
 
-            <!-- Medium -->
+            <!-- Medium: Intermediate -->
             <div class="feature-card fade-up delay-3">
-                <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:12px;">
+                <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:14px;">
                     <div class="feature-card-icon" style="background:var(--warning-bg); border:1px solid var(--warning-border);">
                         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--warning)" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
                     </div>
                     <span class="badge badge-medium">Medium</span>
                 </div>
                 <h3>Intermediate</h3>
-                <p>Method definitions, branching conditionals, array manipulation, and common algorithmic control flow.</p>
+                <p>Method definitions, branching conditionals, array manipulation, and common algorithmic control flow. Requires disciplined accuracy.</p>
                 <a href="practice.jsp?language=<%= lang %>&difficulty=medium" class="btn btn-primary btn-block">
                     <span>Start Medium</span>
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </a>
             </div>
 
-            <!-- Hard -->
+            <!-- Hard: Advanced -->
             <div class="feature-card fade-up delay-4">
-                <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:12px;">
+                <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:14px;">
                     <div class="feature-card-icon" style="background:var(--error-bg); border:1px solid var(--error-border);">
                         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--error)" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
                     </div>
                     <span class="badge badge-hard">Hard</span>
                 </div>
                 <h3>Advanced</h3>
-                <p>Complex data structures, object-oriented paradigms, recursion, nested constructs, and precision typing.</p>
+                <p>Complex data structures, object-oriented paradigms, recursion, nested constructs, and high-speed precision typing challenges.</p>
                 <a href="practice.jsp?language=<%= lang %>&difficulty=hard" class="btn btn-primary btn-block">
                     <span>Start Hard</span>
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>

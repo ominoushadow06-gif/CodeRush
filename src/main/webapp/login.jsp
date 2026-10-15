@@ -11,14 +11,17 @@
 
 <!-- Navbar -->
 <nav class="navbar">
-    <a href="index.jsp" class="brand-logo">Code<span>Rush</span><span class="brand-badge">Trainer</span></a>
-    <div class="nav-actions">
-        <span class="text-muted" style="font-size:0.875rem;">New to CodeRush?</span>
-        <a href="signup.jsp" class="btn btn-secondary btn-sm">Create Account</a>
+    <div class="navbar-container">
+        <a href="index.jsp" class="brand-logo">Code<span>Rush</span><span class="brand-badge">Trainer</span></a>
+        <div></div>
+        <div class="nav-actions">
+            <span class="text-muted" style="font-size:0.875rem;">New to CodeRush?</span>
+            <a href="signup.jsp" class="btn btn-secondary btn-sm">Create Account</a>
+        </div>
     </div>
 </nav>
 
-<!-- Auth Container -->
+<!-- Auth Container (Intentionally Compact & Centered) -->
 <div class="auth-container">
     <div class="auth-card fade-up">
 

@@ -15,38 +15,40 @@
 
 <!-- Navbar -->
 <nav class="navbar">
-    <a href="index.jsp" class="brand-logo">Code<span>Rush</span><span class="brand-badge">Trainer</span></a>
+    <div class="navbar-container">
+        <a href="index.jsp" class="brand-logo">Code<span>Rush</span><span class="brand-badge">Trainer</span></a>
 
-    <!-- Desktop nav links -->
-    <div class="nav-links desktop-only">
-        <a href="difficulty.jsp" class="nav-link">Practice</a>
-        <a href="#features" class="nav-link">Features</a>
-        <% if (currentUser != null) { %>
-        <a href="history" class="nav-link">History</a>
-        <% } %>
-    </div>
-
-    <!-- Desktop nav actions -->
-    <div class="nav-actions desktop-only">
-        <% if (currentUser != null) { %>
-        <div class="user-pill">
-            <span class="user-avatar"><%= currentUser.getUsername().substring(0, 1) %></span>
-            <span><%= currentUser.getUsername() %></span>
+        <!-- Desktop nav links (centered) -->
+        <div class="nav-links desktop-only">
+            <a href="difficulty.jsp" class="nav-link">Practice</a>
+            <a href="#features" class="nav-link">Features</a>
+            <% if (currentUser != null) { %>
+            <a href="history" class="nav-link">History</a>
+            <% } %>
         </div>
-        <a href="dashboard" class="btn btn-secondary btn-sm">Dashboard</a>
-        <a href="logout" class="btn btn-ghost btn-sm">Log out</a>
-        <% } else { %>
-        <a href="login.jsp" class="btn btn-secondary btn-sm">Log In</a>
-        <a href="signup.jsp" class="btn btn-primary btn-sm">Get Started</a>
-        <% } %>
-    </div>
 
-    <!-- Mobile toggle -->
-    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
-        <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.75">
-            <path d="M3 5h14M3 10h14M3 15h14"/>
-        </svg>
-    </button>
+        <!-- Desktop nav actions (right) -->
+        <div class="nav-actions desktop-only">
+            <% if (currentUser != null) { %>
+            <div class="user-pill">
+                <span class="user-avatar"><%= currentUser.getUsername().substring(0, 1) %></span>
+                <span><%= currentUser.getUsername() %></span>
+            </div>
+            <a href="dashboard" class="btn btn-secondary btn-sm">Dashboard</a>
+            <a href="logout" class="btn btn-ghost btn-sm">Log out</a>
+            <% } else { %>
+            <a href="login.jsp" class="btn btn-secondary btn-sm">Log In</a>
+            <a href="signup.jsp" class="btn btn-primary btn-sm">Get Started</a>
+            <% } %>
+        </div>
+
+        <!-- Mobile toggle -->
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+            <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.75">
+                <path d="M3 5h14M3 10h14M3 15h14"/>
+            </svg>
+        </button>
+    </div>
 </nav>
 
 <!-- Mobile Menu -->
@@ -71,10 +73,10 @@
 <!-- Main Content -->
 <main>
     <!-- Hero Section -->
-    <section class="section" style="padding-top: 64px; padding-bottom: 72px;">
-        <div class="container hero-grid">
+    <section class="section" style="padding-top: 56px; padding-bottom: 64px;">
+        <div class="container container-wide hero-grid">
 
-            <!-- Left: Hero Headline & CTA -->
+            <!-- Left: Hero Headline & CTA (approx 55%) -->
             <div>
                 <span class="label-tag mb-3 fade-up">Java Coding Speed & Accuracy Trainer</span>
                 <h1 class="display-heading fade-up delay-1" style="margin-top: 12px; margin-bottom: 20px;">
@@ -82,9 +84,10 @@
                     <span class="text-accent-gradient">one keystroke</span><br>
                     at a time.
                 </h1>
-                <p class="body-large fade-up delay-2" style="margin-bottom: 32px; max-width: 520px;">
+                <p class="body-large fade-up delay-2" style="margin-bottom: 32px; max-width: 580px;">
                     Practice real Java, Python, and C code snippets while tracking your typing speed, 
-                    accuracy, and mistakes in real time. Designed for developers who value precision and muscle memory.
+                    accuracy, and mistakes in real time. Designed for developers who value precision, 
+                    muscle memory, and coding fluency.
                 </p>
                 <div style="display:flex; gap:12px; flex-wrap:wrap;" class="fade-up delay-3">
                     <a href="difficulty.jsp" class="btn btn-primary btn-lg">
@@ -105,7 +108,7 @@
                 </div>
             </div>
 
-            <!-- Right: Code Workspace Mockup -->
+            <!-- Right: Code Workspace Mockup (approx 45%) -->
             <div class="fade-up delay-2">
                 <div class="code-window">
                     <div class="code-window-header">
@@ -118,25 +121,27 @@
                             <span class="badge badge-hard">HARD</span>
                         </div>
                     </div>
-                    <div class="code-window-body" style="font-size:0.875rem; line-height:1.75; min-height:auto; padding:20px 24px;">
-                        <div style="color:#93C5FD; margin-bottom:4px;"><span style="color:#60A5FA;">public int</span> <span style="color:#F3F4F6; font-weight:600;">binarySearch</span>(<span style="color:#60A5FA;">int</span>[] arr, <span style="color:#60A5FA;">int</span> target) {</div>
-                        <div style="padding-left:18px; color:#E5E7EB; margin-bottom:4px;"><span style="color:#60A5FA;">int</span> left = 0, right = arr.length - 1;</div>
-                        <div style="padding-left:18px; color:#4ADE80; margin-bottom:4px;"><span style="color:#60A5FA;">while</span> (left &lt;= right) {</div>
-                        <div style="padding-left:36px; color:#9CA3AF; margin-bottom:4px;"><span style="color:#60A5FA;">int</span> mid = left + (right - left) / 2;</div>
-                        <div style="padding-left:18px; color:#4ADE80; margin-bottom:4px;">}</div>
-                        <div style="color:#93C5FD; margin-top:4px;">}</div>
+                    <div class="code-window-body" style="font-size:0.9375rem; line-height:1.8; min-height:auto; padding:24px 28px;">
+                        <div style="color:#93C5FD; margin-bottom:5px;"><span style="color:#60A5FA;">public int</span> <span style="color:#F3F4F6; font-weight:600;">binarySearch</span>(<span style="color:#60A5FA;">int</span>[] arr, <span style="color:#60A5FA;">int</span> target) {</div>
+                        <div style="padding-left:20px; color:#E5E7EB; margin-bottom:5px;"><span style="color:#60A5FA;">int</span> left = 0, right = arr.length - 1;</div>
+                        <div style="padding-left:20px; color:#4ADE80; margin-bottom:5px;"><span style="color:#60A5FA;">while</span> (left &lt;= right) {</div>
+                        <div style="padding-left:40px; color:#9CA3AF; margin-bottom:5px;"><span style="color:#60A5FA;">int</span> mid = left + (right - left) / 2;</div>
+                        <div style="padding-left:40px; color:#E5E7EB; margin-bottom:5px;"><span style="color:#60A5FA;">if</span> (arr[mid] == target) <span style="color:#60A5FA;">return</span> mid;</div>
+                        <div style="padding-left:20px; color:#4ADE80; margin-bottom:5px;">}</div>
+                        <div style="padding-left:20px; color:#60A5FA; margin-bottom:5px;">return -1;</div>
+                        <div style="color:#93C5FD; margin-top:5px;">}</div>
                     </div>
-                    <div style="display:flex; justify-content:space-around; padding:14px 20px; background:var(--code-header-bg); border-top:1px solid var(--code-border);">
+                    <div style="display:flex; justify-content:space-around; padding:16px 24px; background:var(--code-header-bg); border-top:1px solid var(--code-border);">
                         <div style="text-align:center;">
-                            <div style="font-family:var(--font-mono); font-size:1.25rem; font-weight:700; color:var(--royal-blue); text-shadow:0 0 12px rgba(10,33,192,0.4);">74</div>
+                            <div style="font-family:var(--font-mono); font-size:1.375rem; font-weight:700; color:var(--royal-blue); text-shadow:0 0 12px rgba(10,33,192,0.4);">74</div>
                             <div style="font-size:0.6875rem; font-family:var(--font-mono); color:var(--muted-blue-gray); text-transform:uppercase; letter-spacing:0.05em;">WPM</div>
                         </div>
                         <div style="text-align:center;">
-                            <div style="font-family:var(--font-mono); font-size:1.25rem; font-weight:700; color:#4ADE80;">98.4%</div>
+                            <div style="font-family:var(--font-mono); font-size:1.375rem; font-weight:700; color:#4ADE80;">98.4%</div>
                             <div style="font-size:0.6875rem; font-family:var(--font-mono); color:var(--muted-blue-gray); text-transform:uppercase; letter-spacing:0.05em;">Accuracy</div>
                         </div>
                         <div style="text-align:center;">
-                            <div style="font-family:var(--font-mono); font-size:1.25rem; font-weight:700; color:#FFFFFF;">14s</div>
+                            <div style="font-family:var(--font-mono); font-size:1.375rem; font-weight:700; color:#FFFFFF;">14s</div>
                             <div style="font-size:0.6875rem; font-family:var(--font-mono); color:var(--muted-blue-gray); text-transform:uppercase; letter-spacing:0.05em;">Time</div>
                         </div>
                     </div>
@@ -146,17 +151,17 @@
     </section>
 
     <!-- Subtle Divider -->
-    <div class="container"><div class="section-divider"></div></div>
+    <div class="container container-wide"><div class="section-divider"></div></div>
 
     <!-- Features Section -->
     <section class="section" id="features">
-        <div class="container">
-            <div class="text-center" style="margin-bottom: 48px;">
+        <div class="container container-wide">
+            <div class="text-center" style="margin-bottom: 40px;">
                 <span class="label-tag mb-2 fade-up">Engineered For Performance</span>
                 <h2 class="hero-heading fade-up delay-1" style="margin-top: 8px; margin-bottom: 8px;">
                     Built for engineers who care about craft
                 </h2>
-                <p class="body-large fade-up delay-2" style="max-width: 540px; margin: 0 auto;">
+                <p class="body-large fade-up delay-2" style="max-width: 580px; margin: 0 auto;">
                     Every interface element is calibrated for deliberate practice and measurable typing growth.
                 </p>
             </div>
@@ -214,9 +219,9 @@
     </section>
 
     <!-- Bottom CTA Section -->
-    <section class="section" style="padding-top: 40px; padding-bottom: 72px;">
-        <div class="container text-center">
-            <div class="card card-static fade-up" style="max-width: 680px; margin: 0 auto; padding: 48px 32px;">
+    <section class="section" style="padding-top: 32px; padding-bottom: 64px;">
+        <div class="container container-wide text-center">
+            <div class="card card-static fade-up" style="max-width: 760px; margin: 0 auto; padding: 48px 36px;">
                 <span class="label-tag mb-2">Get Started</span>
                 <h2 class="hero-heading" style="margin-top: 8px; margin-bottom: 12px;">Ready to sharpen your coding speed?</h2>
                 <p class="body-large" style="margin-bottom: 28px;">

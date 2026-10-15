@@ -17,27 +17,29 @@
 
 <!-- Navbar -->
 <nav class="navbar">
-    <a href="index.jsp" class="brand-logo">Code<span>Rush</span><span class="brand-badge">Trainer</span></a>
-    
-    <div class="nav-links desktop-only">
-        <a href="dashboard" class="nav-link">Dashboard</a>
-        <a href="difficulty.jsp" class="nav-link">Practice</a>
-        <a href="history" class="nav-link">History</a>
-    </div>
-
-    <div class="nav-actions desktop-only">
-        <div class="user-pill">
-            <span class="user-avatar"><%= user.getUsername().substring(0, 1) %></span>
-            <span><%= user.getUsername() %></span>
+    <div class="navbar-container">
+        <a href="index.jsp" class="brand-logo">Code<span>Rush</span><span class="brand-badge">Trainer</span></a>
+        
+        <div class="nav-links desktop-only">
+            <a href="dashboard" class="nav-link">Dashboard</a>
+            <a href="difficulty.jsp" class="nav-link">Practice</a>
+            <a href="history" class="nav-link">History</a>
         </div>
-        <a href="logout" class="btn btn-ghost btn-sm">Log out</a>
-    </div>
 
-    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
-        <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.75">
-            <path d="M3 5h14M3 10h14M3 15h14"/>
-        </svg>
-    </button>
+        <div class="nav-actions desktop-only">
+            <div class="user-pill">
+                <span class="user-avatar"><%= user.getUsername().substring(0, 1) %></span>
+                <span><%= user.getUsername() %></span>
+            </div>
+            <a href="logout" class="btn btn-ghost btn-sm">Log out</a>
+        </div>
+
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+            <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.75">
+                <path d="M3 5h14M3 10h14M3 15h14"/>
+            </svg>
+        </button>
+    </div>
 </nav>
 
 <!-- Mobile Menu -->
@@ -53,7 +55,7 @@
 
 <!-- Main Content -->
 <main>
-    <div class="container section" style="padding-top:40px; max-width:840px;">
+    <div class="container container-result section" style="padding-top:40px;">
 
         <!-- Header -->
         <div class="text-center fade-up" style="margin-bottom:28px;">
@@ -73,7 +75,7 @@
             <span class="badge badge-<%= result.getDifficulty().toLowerCase() %>" style="font-size:0.75rem; padding:4px 12px;"><%= result.getDifficulty().toUpperCase() %></span>
         </div>
 
-        <!-- Metrics Grid -->
+        <!-- Metrics Grid (4 Across on Desktop) -->
         <div class="result-grid fade-up delay-2">
 
             <!-- WPM: Prominently Highlighted with Royal Blue -->

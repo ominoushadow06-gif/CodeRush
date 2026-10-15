@@ -16,27 +16,29 @@
 
 <!-- Navbar -->
 <nav class="navbar">
-    <a href="index.jsp" class="brand-logo">Code<span>Rush</span><span class="brand-badge">Trainer</span></a>
-    
-    <div class="nav-links desktop-only">
-        <a href="dashboard" class="nav-link">Dashboard</a>
-        <a href="difficulty.jsp" class="nav-link active">Practice</a>
-        <a href="history" class="nav-link">History</a>
-    </div>
-
-    <div class="nav-actions desktop-only">
-        <div class="user-pill">
-            <span class="user-avatar"><%= user.getUsername().substring(0, 1) %></span>
-            <span><%= user.getUsername() %></span>
+    <div class="navbar-container">
+        <a href="index.jsp" class="brand-logo">Code<span>Rush</span><span class="brand-badge">Trainer</span></a>
+        
+        <div class="nav-links desktop-only">
+            <a href="dashboard" class="nav-link">Dashboard</a>
+            <a href="difficulty.jsp" class="nav-link active">Practice</a>
+            <a href="history" class="nav-link">History</a>
         </div>
-        <a href="logout" class="btn btn-ghost btn-sm">Log out</a>
-    </div>
 
-    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
-        <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.75">
-            <path d="M3 5h14M3 10h14M3 15h14"/>
-        </svg>
-    </button>
+        <div class="nav-actions desktop-only">
+            <div class="user-pill">
+                <span class="user-avatar"><%= user.getUsername().substring(0, 1) %></span>
+                <span><%= user.getUsername() %></span>
+            </div>
+            <a href="logout" class="btn btn-ghost btn-sm">Log out</a>
+        </div>
+
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+            <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.75">
+                <path d="M3 5h14M3 10h14M3 15h14"/>
+            </svg>
+        </button>
+    </div>
 </nav>
 
 <!-- Mobile Menu -->
@@ -50,39 +52,39 @@
     <a href="logout" class="btn btn-secondary btn-sm" style="margin-top:8px;">Log out</a>
 </div>
 
-<!-- Main Practice Workspace -->
+<!-- Main Practice Workspace (Full Desktop Utilization: ~1400px) -->
 <main>
-    <div class="container" style="padding-top:28px; padding-bottom:48px; max-width:960px;">
+    <div class="container container-practice" style="padding-top:28px; padding-bottom:48px;">
 
-        <!-- Top Section: Badges & Live Telemetry -->
+        <!-- 1. Top Section: Badges & Live Telemetry (Full Width) -->
         <div class="stat-bar fade-up">
             <!-- Left Info: Language, Difficulty, Snippet Topic -->
-            <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+            <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
                 <span id="ui-badge-lang" class="badge badge-lang">JAVA</span>
                 <span id="ui-badge-diff" class="badge badge-easy">EASY</span>
-                <span id="snippet-desc" style="font-size:0.8125rem; color:var(--text-secondary); margin-left:4px; font-weight:500;">Loading challenge...</span>
+                <span id="snippet-desc" style="font-size:0.875rem; color:var(--text-secondary); margin-left:6px; font-weight:500;">Loading challenge...</span>
             </div>
 
             <!-- Right Telemetry: Timer, WPM, Accuracy, Mistakes, Restart -->
             <div class="stat-bar-group">
                 <div class="stat-bar-item" title="Elapsed Time">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                     <span id="timer" class="stat-bar-value">00:00</span>
                 </div>
 
                 <div class="stat-bar-item" title="Live Typing Speed">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--royal-blue)" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--royal-blue)" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
                     <span id="live-wpm" class="stat-bar-value" style="color:var(--royal-blue);">0</span>
                     <span style="font-size:0.75rem; color:var(--text-muted);">WPM</span>
                 </div>
 
                 <div class="stat-bar-item" title="Typing Accuracy">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2"><polyline points="22 11.08 22 12 a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2"><polyline points="22 11.08 22 12 a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
                     <span id="live-accuracy" class="stat-bar-value" style="color:var(--success);">100%</span>
                 </div>
 
                 <div class="stat-bar-item" title="Total Keystroke Errors">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--error)" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--error)" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
                     <span id="mistakes-count" class="stat-bar-value" style="color:var(--error);">0</span>
                     <span style="font-size:0.75rem; color:var(--text-muted);">ERR</span>
                 </div>
@@ -94,7 +96,7 @@
             </div>
         </div>
 
-        <!-- Main Section: Coding Editor Panel -->
+        <!-- 2. Main Section: Coding Editor Panel (Full Width of ~1400px Workspace) -->
         <div id="code-window" class="code-window fade-up delay-1">
             <div class="code-window-header">
                 <div class="code-window-dots">
@@ -129,7 +131,7 @@
             </div>
         </div>
 
-        <!-- Bottom Section: Mechanical Virtual Keyboard -->
+        <!-- 3. Bottom Section: Mechanical Virtual Keyboard (Full Width matching Editor) -->
         <div id="virtual-keyboard" class="virtual-keyboard fade-up delay-2">
             <!-- Row 1: Numbers & Symbols -->
             <div class="kb-row">

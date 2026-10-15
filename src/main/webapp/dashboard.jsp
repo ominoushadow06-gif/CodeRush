@@ -23,27 +23,29 @@
 
 <!-- Navbar -->
 <nav class="navbar">
-    <a href="index.jsp" class="brand-logo">Code<span>Rush</span><span class="brand-badge">Trainer</span></a>
-    
-    <div class="nav-links desktop-only">
-        <a href="dashboard" class="nav-link active">Dashboard</a>
-        <a href="difficulty.jsp" class="nav-link">Practice</a>
-        <a href="history" class="nav-link">History</a>
-    </div>
-
-    <div class="nav-actions desktop-only">
-        <div class="user-pill">
-            <span class="user-avatar"><%= user.getUsername().substring(0, 1) %></span>
-            <span><%= user.getUsername() %></span>
+    <div class="navbar-container">
+        <a href="index.jsp" class="brand-logo">Code<span>Rush</span><span class="brand-badge">Trainer</span></a>
+        
+        <div class="nav-links desktop-only">
+            <a href="dashboard" class="nav-link active">Dashboard</a>
+            <a href="difficulty.jsp" class="nav-link">Practice</a>
+            <a href="history" class="nav-link">History</a>
         </div>
-        <a href="logout" class="btn btn-ghost btn-sm">Log out</a>
-    </div>
 
-    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
-        <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.75">
-            <path d="M3 5h14M3 10h14M3 15h14"/>
-        </svg>
-    </button>
+        <div class="nav-actions desktop-only">
+            <div class="user-pill">
+                <span class="user-avatar"><%= user.getUsername().substring(0, 1) %></span>
+                <span><%= user.getUsername() %></span>
+            </div>
+            <a href="logout" class="btn btn-ghost btn-sm">Log out</a>
+        </div>
+
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+            <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.75">
+                <path d="M3 5h14M3 10h14M3 15h14"/>
+            </svg>
+        </button>
+    </div>
 </nav>
 
 <!-- Mobile Menu -->
@@ -59,10 +61,10 @@
 
 <!-- Main Content -->
 <main>
-    <div class="container section" style="padding-top:40px;">
+    <div class="container container-dashboard section" style="padding-top:40px;">
 
-        <!-- Dashboard Header -->
-        <div class="fade-up" style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:16px; margin-bottom:32px;">
+        <!-- Dashboard Header: Welcome (Left) | Start Practice (Right) -->
+        <div class="fade-up" style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:16px; margin-bottom:32px; width:100%;">
             <div>
                 <span class="label-tag mb-2">Trainer Overview</span>
                 <h1 class="hero-heading" style="margin-top:8px; margin-bottom:4px;">
@@ -78,8 +80,8 @@
             </div>
         </div>
 
-        <!-- Statistics Cards Grid -->
-        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:16px; margin-bottom:36px;">
+        <!-- 3 Statistics Cards: Stretch evenly across available width -->
+        <div class="stats-grid-3">
 
             <div class="stat-card fade-up">
                 <div class="stat-label">Typing Speed</div>
@@ -101,12 +103,12 @@
 
         </div>
 
-        <!-- Recent Sessions Card -->
-        <div class="card card-static fade-up delay-3" style="padding:0; overflow:hidden;">
-            <div style="padding:18px 24px; border-bottom:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; background:var(--surface);">
+        <!-- Recent Sessions Card: Full Width of Dashboard -->
+        <div class="card card-static fade-up delay-3" style="padding:0; overflow:hidden; width:100%;">
+            <div style="padding:20px 28px; border-bottom:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; background:var(--surface);">
                 <div>
-                    <h2 style="font-size:1.0625rem; font-weight:600; margin:0; color:var(--almost-black);">Recent Sessions</h2>
-                    <p style="font-size:0.8125rem; color:var(--text-secondary); margin:2px 0 0;">Latest practice attempts and results</p>
+                    <h2 style="font-size:1.125rem; font-weight:600; margin:0; color:var(--almost-black);">Recent Sessions</h2>
+                    <p style="font-size:0.8125rem; color:var(--text-secondary); margin:3px 0 0;">Latest practice attempts and results</p>
                 </div>
                 <a href="history" class="btn btn-secondary btn-sm" style="font-weight:600; color:var(--royal-blue); border-color:var(--royal-blue-border);">
                     View All History →
@@ -114,7 +116,7 @@
             </div>
 
             <% if (recentResults == null || recentResults.isEmpty()) { %>
-            <div style="padding:56px 24px; text-align:center;">
+            <div style="padding:64px 24px; text-align:center;">
                 <div style="width:48px; height:48px; border-radius:12px; background:var(--surface-sunken); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; margin:0 auto 16px;">
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="1.75"><polygon points="5 3 19 12 5 21 5 3"/></svg>
                 </div>
@@ -137,7 +139,7 @@
                     <tbody>
                         <% for (Result r : recentResults) { %>
                         <tr>
-                            <td style="color:var(--text-secondary); font-size:0.8125rem; font-family:var(--font-mono);">
+                            <td style="color:var(--text-secondary); font-size:0.875rem; font-family:var(--font-mono);">
                                 <%= r.getAttemptedAt().toString().substring(0, 16) %>
                             </td>
                             <td>
