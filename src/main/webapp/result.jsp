@@ -10,112 +10,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Session Complete — CodeRush</title>
+    <title>Session Summary — CodeRush</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<!-- Ambient Background -->
-<div class="ambient-bg" aria-hidden="true">
-    <div class="blob blob-1" style="opacity:0.45;"></div>
-    <div class="blob blob-4" style="opacity:0.6;"></div>
-</div>
-<div class="grid-overlay" aria-hidden="true"></div>
-
 <!-- Navbar -->
 <nav class="navbar">
-    <a href="index.jsp" class="brand-logo">Code<span>Rush</span></a>
+    <a href="index.jsp" class="brand-logo">Code<span>Rush</span><span class="brand-badge">Trainer</span></a>
+    
     <div class="nav-links desktop-only">
         <a href="dashboard" class="nav-link">Dashboard</a>
+        <a href="difficulty.jsp" class="nav-link">Practice</a>
         <a href="history" class="nav-link">History</a>
     </div>
-    <div class="nav-actions desktop-only" style="display:flex;align-items:center;gap:12px;">
-        <span style="font-size:0.875rem;color:var(--fg-muted);"><%= user.getUsername() %></span>
+
+    <div class="nav-actions desktop-only">
+        <div class="user-pill">
+            <span class="user-avatar"><%= user.getUsername().substring(0, 1) %></span>
+            <span><%= user.getUsername() %></span>
+        </div>
         <a href="logout" class="btn btn-ghost btn-sm">Log out</a>
     </div>
+
     <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M3 6h14M3 10h14M3 14h14"/>
+        <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.75">
+            <path d="M3 5h14M3 10h14M3 15h14"/>
         </svg>
     </button>
 </nav>
+
+<!-- Mobile Menu -->
 <div class="mobile-menu" id="mobile-menu">
+    <div style="padding: 4px 14px 8px; font-weight: 600; color: var(--text-primary);">
+        Signed in as <%= user.getUsername() %>
+    </div>
     <a href="dashboard" class="nav-link">Dashboard</a>
+    <a href="difficulty.jsp" class="nav-link">Practice</a>
     <a href="history" class="nav-link">History</a>
-    <a href="logout" class="btn btn-ghost btn-sm" style="margin-top:8px;">Log out</a>
+    <a href="logout" class="btn btn-secondary btn-sm" style="margin-top:8px;">Log out</a>
 </div>
 
 <!-- Main Content -->
 <main>
-    <div class="container section" style="padding-top:64px;max-width:800px;text-align:center;">
+    <div class="container section" style="padding-top:40px; max-width:840px;">
 
-        <!-- Completion Icon -->
-        <div class="fade-up" style="margin-bottom:24px;">
-            <div style="width:72px;height:72px;border-radius:20px;background:rgba(34,197,94,0.10);border:1px solid rgba(34,197,94,0.20);display:flex;align-items:center;justify-content:center;margin:0 auto;">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <!-- Header -->
+        <div class="text-center fade-up" style="margin-bottom:28px;">
+            <div style="width:48px; height:48px; border-radius:12px; background:var(--royal-blue-subtle); border:1px solid var(--royal-blue-border); display:flex; align-items:center; justify-content:center; margin:0 auto 16px;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--royal-blue)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             </div>
+            <span class="label-tag mb-2">Session Complete</span>
+            <h1 class="hero-heading" style="margin-top:8px; margin-bottom:6px;">Performance Summary</h1>
+            <p class="body-large">Nice work, <%= user.getUsername() %>! Here is your typing breakdown.</p>
         </div>
-
-        <!-- Heading -->
-        <div class="label-tag mb-4 fade-up delay-1">Session complete</div>
-        <h1 class="hero-heading text-gradient fade-up delay-1" style="margin-bottom:8px;">
-            Nice work, <%= user.getUsername() %>!
-        </h1>
-        <p class="body-large fade-up delay-2" style="margin-bottom:48px;">
-            Here's how you performed. Keep practicing to push those numbers up.
-        </p>
 
         <% if (result != null) { %>
 
-        <!-- Result Metrics -->
-        <div class="result-grid fade-up delay-2">
-
-            <div class="result-metric">
-                <h3>Speed</h3>
-                <div class="value" style="color: <%=result.getWpm() >= 60 ? "#4ade80" : result.getWpm() >= 40 ? "#fbbf24" : "var(--fg)"%>;">
-                    <%= result.getWpm() %><span style="font-size:1.25rem;font-weight:400;color:var(--fg-muted);"> WPM</span>
-                </div>
-            </div>
-
-            <div class="result-metric">
-                <h3>Accuracy</h3>
-                <div class="value" style="color: <%=result.getAccuracy() >= 95 ? "#4ade80" : result.getAccuracy() >= 80 ? "#fbbf24" : "#f87171"%>;">
-                    <%= result.getAccuracy() %><span style="font-size:1.25rem;font-weight:400;color:var(--fg-muted);">%</span>
-                </div>
-            </div>
-
-            <div class="result-metric">
-                <h3>Mistakes</h3>
-                <div class="value" style="color: <%=result.getMistakes() == 0 ? "#4ade80" : result.getMistakes() <= 3 ? "#fbbf24" : "#f87171"%>;">
-                    <%= result.getMistakes() %><span style="font-size:1.25rem;font-weight:400;color:var(--fg-muted);"> errors</span>
-                </div>
-            </div>
-
+        <!-- Language & Difficulty Chips -->
+        <div style="display:flex; gap:8px; justify-content:center; align-items:center; margin-bottom:28px;" class="fade-up delay-1">
+            <span class="badge badge-lang" style="font-size:0.75rem; padding:4px 12px;"><%= result.getLanguage().toUpperCase() %></span>
+            <span class="badge badge-<%= result.getDifficulty().toLowerCase() %>" style="font-size:0.75rem; padding:4px 12px;"><%= result.getDifficulty().toUpperCase() %></span>
         </div>
 
-        <!-- Language + Difficulty badges -->
-        <div style="display:flex;gap:8px;justify-content:center;margin-bottom:40px;" class="fade-up delay-3">
-            <span class="badge badge-lang"><%= result.getLanguage().toUpperCase() %></span>
-            <span class="badge badge-<%= result.getDifficulty().toLowerCase() %>"><%= result.getDifficulty().toUpperCase() %></span>
+        <!-- Metrics Grid -->
+        <div class="result-grid fade-up delay-2">
+
+            <!-- WPM: Prominently Highlighted with Royal Blue -->
+            <div class="result-metric result-metric-primary">
+                <h3>Typing Speed</h3>
+                <div class="value value-accent"><%= result.getWpm() %></div>
+                <div style="margin-top:8px; font-size:0.75rem; color:var(--royal-blue); font-weight:600; font-family:var(--font-mono);">WORDS PER MINUTE</div>
+            </div>
+
+            <!-- Accuracy -->
+            <div class="result-metric">
+                <h3>Accuracy</h3>
+                <div class="value" style="color: <%= result.getAccuracy() >= 95 ? "var(--success)" : result.getAccuracy() >= 80 ? "var(--warning)" : "var(--error)" %>;">
+                    <%= result.getAccuracy() %><span style="font-size:1.5rem; font-weight:500;">%</span>
+                </div>
+                <div style="margin-top:8px; font-size:0.75rem; color:var(--text-muted); font-family:var(--font-mono);">CORRECTNESS</div>
+            </div>
+
+            <!-- Time Taken -->
+            <div class="result-metric">
+                <h3>Elapsed Time</h3>
+                <div class="value">
+                    <%= result.getTimeTaken() %><span style="font-size:1.25rem; font-weight:400; color:var(--text-muted);">s</span>
+                </div>
+                <div style="margin-top:8px; font-size:0.75rem; color:var(--text-muted); font-family:var(--font-mono);">SECONDS DURATION</div>
+            </div>
+
+            <!-- Errors -->
+            <div class="result-metric">
+                <h3>Errors</h3>
+                <div class="value" style="color: <%= result.getMistakes() == 0 ? "var(--success)" : result.getMistakes() <= 3 ? "var(--warning)" : "var(--error)" %>;">
+                    <%= result.getMistakes() %>
+                </div>
+                <div style="margin-top:8px; font-size:0.75rem; color:var(--text-muted); font-family:var(--font-mono);">MISTAKES RECORDED</div>
+            </div>
+
         </div>
 
         <% } else { %>
-        <div class="card fade-up delay-2" style="text-align:center;padding:40px;margin-bottom:40px;">
-            <p class="text-muted">Result data is not available. Please try again.</p>
+        <div class="card fade-up delay-1" style="text-align:center; padding:48px 24px; margin-bottom:32px;">
+            <p class="text-muted">No result record was found for this session.</p>
         </div>
         <% } %>
 
-        <!-- Actions -->
-        <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;" class="fade-up delay-3">
+        <!-- Primary & Secondary Actions -->
+        <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:36px;" class="fade-up delay-3">
             <a href="difficulty.jsp" class="btn btn-primary btn-lg">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.01"/></svg>
-                Practice Again
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.01"/></svg>
+                <span>Practice Again</span>
             </a>
             <a href="dashboard" class="btn btn-secondary btn-lg">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-                Dashboard
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                <span>Dashboard</span>
             </a>
-            <a href="history" class="btn btn-ghost btn-lg">View History</a>
+            <a href="history" class="btn btn-secondary btn-lg">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                <span>View History</span>
+            </a>
         </div>
 
     </div>
@@ -124,12 +140,9 @@
 <script>
     const navToggle = document.getElementById('nav-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
-    navToggle.addEventListener('click', () => mobileMenu.classList.toggle('open'));
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(e => { if (e.isIntersecting) { e.target.style.animationPlayState = 'running'; observer.unobserve(e.target); } });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.fade-up').forEach(el => { el.style.animationPlayState = 'paused'; observer.observe(el); });
+    if (navToggle && mobileMenu) {
+        navToggle.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+    }
 </script>
 </body>
 </html>

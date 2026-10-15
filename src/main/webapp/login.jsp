@@ -9,39 +9,32 @@
 </head>
 <body>
 
-<!-- Ambient Background -->
-<div class="ambient-bg" aria-hidden="true">
-    <div class="blob blob-1" style="opacity:0.6;"></div>
-    <div class="blob blob-3" style="opacity:0.4;"></div>
-</div>
-<div class="grid-overlay" aria-hidden="true"></div>
-
 <!-- Navbar -->
 <nav class="navbar">
-    <a href="index.jsp" class="brand-logo">Code<span>Rush</span></a>
-    <div style="display:flex;align-items:center;gap:8px;">
-        <span class="text-muted" style="font-size:0.875rem;">New here?</span>
+    <a href="index.jsp" class="brand-logo">Code<span>Rush</span><span class="brand-badge">Trainer</span></a>
+    <div class="nav-actions">
+        <span class="text-muted" style="font-size:0.875rem;">New to CodeRush?</span>
         <a href="signup.jsp" class="btn btn-secondary btn-sm">Create Account</a>
     </div>
 </nav>
 
-<!-- Auth Form -->
+<!-- Auth Container -->
 <div class="auth-container">
     <div class="auth-card fade-up">
 
         <!-- Header -->
         <div class="auth-header">
-            <div class="label-tag mb-4">Welcome back</div>
-            <h1>Log In to CodeRush</h1>
-            <p>Continue tracking your typing metrics</p>
+            <span class="label-tag">Welcome Back</span>
+            <h1>Log in to CodeRush</h1>
+            <p>Improve your coding speed and accuracy.</p>
         </div>
 
         <!-- Server-side error -->
         <% String loginError = (String) request.getAttribute("error"); %>
         <% if (loginError != null) { %>
         <div class="alert alert-danger" role="alert">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-            <%= loginError %>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <span><%= loginError %></span>
         </div>
         <% } %>
 
@@ -54,7 +47,7 @@
                     id="identifier"
                     name="identifier"
                     class="form-input"
-                    placeholder="your_username"
+                    placeholder="Enter username or email"
                     autocomplete="username"
                     required
                 >
@@ -67,28 +60,22 @@
                     id="password"
                     name="password"
                     class="form-input"
-                    placeholder="••••••••"
+                    placeholder="Enter your password"
                     autocomplete="current-password"
                     required
                 >
             </div>
 
-            <button type="submit" class="btn btn-primary btn-block btn-lg" style="margin-top:8px;">
-                Sign In
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            <button type="submit" class="btn btn-primary btn-block btn-lg" style="margin-top:12px;">
+                <span>Sign In</span>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </button>
         </form>
 
-        <!-- Divider -->
-        <div style="display:flex;align-items:center;gap:12px;margin:24px 0;">
-            <div style="flex:1;height:1px;background:var(--border);"></div>
-            <span style="font-size:0.75rem;color:var(--fg-muted);">OR</span>
-            <div style="flex:1;height:1px;background:var(--border);"></div>
-        </div>
-
-        <p style="text-align:center;font-size:0.875rem;color:var(--fg-muted);">
+        <!-- Footer link -->
+        <p style="text-align:center;font-size:0.875rem;color:var(--text-secondary);margin-top:24px;">
             Don't have an account?
-            <a href="signup.jsp" style="color:var(--accent);text-decoration:none;font-weight:500;">Sign up free</a>
+            <a href="signup.jsp" style="color:var(--royal-blue);text-decoration:none;font-weight:600;">Sign up free</a>
         </p>
     </div>
 </div>
